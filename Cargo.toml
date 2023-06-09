@@ -1,0 +1,11 @@
+[package]
+name = "symbol_count"
+version = "0.1.0"
+edition = "2021"
+description = "Search and count symbol occurences in the text file"
+authors = ["Egor Markov"]
+
+[dependencies]
+anyhow = "1.0.71"
+clap = {version = "4.3.2", features = ["cargo"]}
+rayon = "1.7.0"

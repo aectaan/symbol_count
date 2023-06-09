@@ -1,0 +1,29 @@
+on:
+  push:
+    tags:
+      - "*.*.*"
+
+name: Test and lint
+
+jobs:
+  codestyle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check formatting
+        uses: actions/checkout@v2
+      - run: cargo fmt --all --check
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: lint
+        uses: actions/checkout@v2
+      - run: cargo clippy --all-targets --all-features -- -D clippy::all
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+    - name: Run tests
+      uses: actions-rs/cargo@v1 
+      with:
+        command: test
